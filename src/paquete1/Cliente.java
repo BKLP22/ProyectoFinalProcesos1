@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,16 +21,33 @@ public class Cliente {
 
         DataInputStream in;
         DataOutputStream out;
-
+        Scanner sc1 = new Scanner(System.in);
+        String mensaje1;
+        boolean fin = true;
 
         try{
             Socket sc=new Socket(HOST,PUERTO);
             in=new DataInputStream(sc.getInputStream());
             out=new DataOutputStream(sc.getOutputStream());
-            out.writeUTF("HOLA MUNDO DESDE EL CLIENTE");
+            System.out.println("escriba el mensaje...");
 
-            String mensaje=in.readUTF();
-            System.out.println(mensaje);
+            while(fin == true){
+                mensaje1=sc1.nextLine();
+                out.writeUTF(mensaje1);
+                String mensaje=in.readUTF();
+                System.out.println(mensaje);
+                System.out.println("escriba el mensaje...");
+                mensaje1=sc1.nextLine();
+                out.writeUTF(mensaje1);
+                if(mensaje.equals("1")){
+                    fin = false;
+                }else{
+                    fin = true;
+                }
+            }
+
+
+
             sc.close();
 
         }catch (IOException ex)
