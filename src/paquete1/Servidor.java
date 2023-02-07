@@ -20,7 +20,7 @@ public class Servidor
         DataOutputStream out;
         Scanner sc1 = new Scanner(System.in);
         String respuesta;
-        boolean fin = true;
+        boolean fin = true  ;
         try
         {
             servidor=new ServerSocket(PUERTO);

@@ -23,7 +23,7 @@ public class Cliente {
         DataOutputStream out;
         Scanner sc1 = new Scanner(System.in);
         String mensaje1;
-        boolean fin = true;
+        boolean fin = true  ;
 
         try{
             Socket sc=new Socket(HOST,PUERTO);
